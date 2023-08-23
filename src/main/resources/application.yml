@@ -1,17 +1,17 @@
 # DB Config
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql:thin:@postgres://sstarkkm:hzYxITuwojWE0t6mYkYidiKQqSEu1yiW@tiny.db.elephantsql.com/sstarkkm
-    username: sstarkkm
-    password: hzYxITuwojWE0t6mYkYidiKQqSEu1yiW
+ datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://tiny.db.elephantsql.com/sstarkkm
+  username: sstarkkm
+  password: hzYxITuwojWE0t6mYkYidiKQqSEu1yiW
     
-  jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-        use_sql_comments: true
+ jpa:
+  database-platform: org.hibernate.dialect.PostgreSQLDialect
+  hibernate:
+   show_sql: true
+   format_sql: true
+   use_sql_comments: true
     
 
 logging:
