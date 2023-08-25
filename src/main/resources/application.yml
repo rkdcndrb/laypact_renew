@@ -1,7 +1,15 @@
+server:
+ port: 8080
+ 
 # DB Config
 spring:
  datasource:
   driver-class-name: org.postgresql.Driver
+  
+  #url: jdbc:postgresql://john.db.elephantsql.com/bvhofjta
+  #username: bvhofjta
+  #password: CCCSfXJ5EVpVVOFOB2GOosmlwT6heSv8
+  
   url: jdbc:postgresql://tiny.db.elephantsql.com/sstarkkm
   username: sstarkkm
   password: hzYxITuwojWE0t6mYkYidiKQqSEu1yiW
@@ -12,19 +20,27 @@ spring:
    show_sql: true
    format_sql: true
    use_sql_comments: true
-    
-
+   ddl-auto: create
+   
+ thymeleaf:
+  enabled: true
+  cache: false
+  prefix: classpath:templates/
+  suffix: html
+ 
+# logging
 logging:
   level:
-    org:
-     Springframework:
-      jdbc: debug
+    org.springframework.jdbc: debug
       
-     hibernate:
-      type:
-       descriptor:
-        sql:
-         basicBinder: TRACE
-      SQL: DEBUG
+    hibernate:
+     type:
+      descriptor:
+       sql:
+        basicBinder: TRACE
+     SQL: DEBUG
 
-  
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    use-root-path: true
