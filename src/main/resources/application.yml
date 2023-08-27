@@ -5,9 +5,6 @@ server:
 spring:
  datasource:
   driver-class-name: org.postgresql.Driver
-  devtools :
-    restart :
-      enabled: true
   
   #url: jdbc:postgresql://john.db.elephantsql.com/bvhofjta
   #username: bvhofjta
@@ -28,8 +25,8 @@ spring:
  thymeleaf:
   enabled: true
   cache: false
-  prefix: classpath:src/main/resources/templates/
-  suffix: html
+  prefix: classpath:/templates/
+  suffix: .html
  
 # logging
 logging:

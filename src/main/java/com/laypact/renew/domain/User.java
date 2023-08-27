@@ -27,8 +27,8 @@ import lombok.ToString;
 public class User extends AuditBaseEntity<String> {
 
 	@Id
-	@Column(name = "user_id", length = 75)
-	private String userId;
+	@Column(name = "seq", length = 75)
+	private long seq;
 	
 	@Column(name = "name", length = 50)
 	private String name;
@@ -36,7 +36,9 @@ public class User extends AuditBaseEntity<String> {
 	private String auth;
 	@Column(name = "email_addr", length = 80)
 	private String emailAddr;
-	
-	
+	@Column(name = "password", length = 200)
+	private String password;
+	@Column(name = "id", length = 10)
+	private String id;
 	
 }
