@@ -5,14 +5,17 @@ server:
 spring:
  datasource:
   driver-class-name: org.postgresql.Driver
+  devtools :
+    restart :
+      enabled: true
   
   #url: jdbc:postgresql://john.db.elephantsql.com/bvhofjta
   #username: bvhofjta
   #password: CCCSfXJ5EVpVVOFOB2GOosmlwT6heSv8
   
-  url: jdbc:postgresql://tiny.db.elephantsql.com/sstarkkm
-  username: sstarkkm
-  password: hzYxITuwojWE0t6mYkYidiKQqSEu1yiW
+  url: jdbc:postgresql://laypact.clsjimf1dwao.us-east-1.rds.amazonaws.com:5432/postgres
+  username: root
+  password: lay20693091
     
  jpa:
   database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -25,7 +28,7 @@ spring:
  thymeleaf:
   enabled: true
   cache: false
-  prefix: classpath:templates/
+  prefix: classpath:src/main/resources/templates/
   suffix: html
  
 # logging
