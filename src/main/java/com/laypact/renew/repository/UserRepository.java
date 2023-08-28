@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.laypact.renew.domain.User;
-import com.laypact.renew.dto.LoginDto;
-
 import jakarta.transaction.Transactional;
 
 @Repository

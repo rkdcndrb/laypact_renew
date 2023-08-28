@@ -21,7 +21,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Data
 @Entity
 @Table(name = "users")
 public class User extends AuditBaseEntity<String> {

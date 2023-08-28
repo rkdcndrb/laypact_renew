@@ -1,16 +1,15 @@
 package com.laypact.renew.dto;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@RequiredArgsConstructor
 @ToString
+@AllArgsConstructor
 public class LoginDto {
 
-	private long seq;
+	private Long seq;
 	private String name;
 	private String auth;
 	private String emailAddr;

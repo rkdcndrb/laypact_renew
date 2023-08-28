@@ -57,7 +57,7 @@ License: For each use you must have a valid license purchased only from above li
 
                   </div>
                 </div>
-                <form id="loginForm" class="forms-sample" method="post" action="" autocomplete="off" th:object="${loginForm}" th:action="@{login}">
+                <form id="loginForm" class="forms-sample" method="post" action="" autocomplete="off" th:object="${loginForm}" th:action="@{/admin/login}">
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
                     <a href="#" class="noble-ui-logo d-block mb-2">Laypact<span>ADMIN</span></a>
@@ -66,6 +66,8 @@ License: For each use you must have a valid license purchased only from above li
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">ID</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="id" value="admin">
+                        <input type="hidden" name="name" value="name">
+
                       </div>
                       <div class="mb-3">
                         <label for="userPassword" class="form-label">Password</label>

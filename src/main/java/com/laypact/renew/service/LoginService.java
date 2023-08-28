@@ -26,7 +26,7 @@ public class LoginService {
 	@Autowired
 	public UserRepository loginRepository;
 	
-	public boolean selectLogin(LoginDto loginDto, HttpServletRequest request) throws UserNotFoundException {
+	public boolean selectLogin(LoginDto loginDto) throws UserNotFoundException {
 		
 		boolean isLogin = false;
 		

@@ -5,40 +5,29 @@ server:
 spring:
  datasource:
   driver-class-name: org.postgresql.Driver
-  
-  #url: jdbc:postgresql://john.db.elephantsql.com/bvhofjta
-  #username: bvhofjta
-  #password: CCCSfXJ5EVpVVOFOB2GOosmlwT6heSv8
-  
   url: jdbc:postgresql://laypact.clsjimf1dwao.us-east-1.rds.amazonaws.com:5432/postgres
   username: root
   password: lay20693091
-    
+  
+  devtools :
+    restart :
+      enabled: true
+       
  jpa:
   database-platform: org.hibernate.dialect.PostgreSQLDialect
-  hibernate:
-   show_sql: true
-   format_sql: true
-   use_sql_comments: true
+  hibernate:   
    ddl-auto: create
-   
+  properties:
+   hibernate:
+    format_sql: true #운영에서는 false 처리
+    highlight_sql: true #운영에서는 false 처리
+    use_sql_comments: true #운영에서는 false 처리    
+
  thymeleaf:
   enabled: true
   cache: false
   prefix: classpath:/templates/
   suffix: .html
- 
-# logging
-logging:
-  level:
-    org.springframework.jdbc: debug
-      
-    hibernate:
-     type:
-      descriptor:
-       sql:
-        basicBinder: TRACE
-     SQL: DEBUG
 
 springdoc:
   swagger-ui:
