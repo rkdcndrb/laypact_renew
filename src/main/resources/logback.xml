@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="LOGS_ABSOLUTE_PATH" value="./logs"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </layout>
+  </appender>
+  
+  <springProfile name="local">
+	  <root level="ERROR">
+	    <appender-ref ref="STDOUT"/>
+	  </root>
+	  <logger level="DEBUG" name="com.laypact.renew" />
+	  <logger level="DEBUG" name="org.springframework.boot" />
+	  <logger level="INFO" name="org.springframework.boot.autoconfigure" />
+	  
+	  <logger level="INFO" name="org.springframework.security" />
+	  <logger level="ERROR" name="org.springframework" />
+	  
+	  <logger level="DEBUG" name="org.springframework.jdbc" />
+	  <logger level="INFO" name="jdbc.resulttable" />
+	  <logger level="DEBUG" name="org.hibernate.SQL" />
+	  <logger level="TRACE" name="org.hibernate.orm.jdbc.bind" />	  	  
+	  	  
+	  <logger level="INFO" name="org.springframework.http" />
+	  <logger level="INFO" name="org.springframework.web" />	  
+	  
+  </springProfile>
+  
+  <springProfile name="dev">
+	  <root level="ERROR">
+	    <appender-ref ref="STDOUT"/>
+	  </root>
+	  <logger level="INFO" name="com.laypact.renew" />
+	  <logger level="INFO" name="org.springframework.boot" />
+	  <logger level="INFO" name="org.springframework.boot.autoconfigure" />
+	  
+	  <logger level="INFO" name="org.springframework.security" />
+	  <logger level="ERROR" name="org.springframework" />
+	  
+	  <logger level="INFO" name="org.springframework.jdbc" />
+	  <logger level="INFO" name="jdbc.resulttable" />
+	  <logger level="INFO" name="org.hibernate.SQL" />
+	  <logger level="TRACE" name="org.hibernate.orm.jdbc.bind" />	  	  
+	  	  
+	  <logger level="INFO" name="org.springframework.http" />
+	  <logger level="INFO" name="org.springframework.web" />	  
+	  
+  </springProfile>
+  
+
+</configuration>
