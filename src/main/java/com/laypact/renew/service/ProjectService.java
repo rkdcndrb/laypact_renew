@@ -1,6 +1,7 @@
 package com.laypact.renew.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,19 @@ public class ProjectService {
 	@Autowired 
 	ProjectQueryRepository projectQueryRepositoty;
 	
-	public Optional<Project> findById(Long id){
-		return projectRepositoty.findById(id);
+	public Optional<Project> findById(Long seq){
+		return projectRepositoty.findById(seq);
 	}
 	
-	public List<Project> findByNameLike(String name){
-		return projectRepositoty.findByNameLike(name);
+	public List<Project> findByNameLike(String subject){
+		return projectRepositoty.findBySubjectLike(subject);
 	}
 	
-	public List<Project> queryTest(String name) {
-		return projectQueryRepositoty.queryTest(name);
+	public List<Project> queryTest(String subject) {
+		return projectQueryRepositoty.queryTest(subject);
 	}
 	
+	public List<Project> selectProjectList(Map<String, Object> map) throws Exception {
+		return projectRepositoty.findAll();
+	}
 }

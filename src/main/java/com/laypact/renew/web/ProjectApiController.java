@@ -20,9 +20,9 @@ public class ProjectApiController {
 	@Autowired
 	ProjectService projectService;
 	
-	@GetMapping()
-	public List<Project> selectAll() {
-		return projectService.queryTest("name");
-	}
+//	@GetMapping()
+//	public List<Project> selectAll() {
+//		return projectService.queryTest("name");
+//	}
 	
 }

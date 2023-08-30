@@ -45,5 +45,9 @@ public class Project extends AuditBaseEntity<String> {
 	private String image;
 	@Column(name = "thumbnail_image", length = 200)
 	private String thumbnailImage;
+	@Column(name = "main_yn", length = 1)
+	private Boolean mainYn;
+	@Column(name = "use_yn", length = 1)
+	private Boolean useYn;
 	
 }

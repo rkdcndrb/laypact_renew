@@ -21,17 +21,17 @@ public class ProjectQueryRepository extends QuerydslRepositorySupport {
 		super(Project.class);
 	}
 
-	public List<Project> queryTest(String name) {
+	public List<Project> queryTest(String subject) {
 		return getQueryFactory().select(project)
 				.from(project)
-				.where(likeName(name))
+				.where(likeSubject(subject))
 				.fetch();
 		
 	}
 	
-	private BooleanExpression likeName(String name) {
-		if(StringUtils.hasText(name)) {
-			return project.subject.like("%" + name + "%");
+	private BooleanExpression likeSubject(String subject) {
+		if(StringUtils.hasText(subject)) {
+			return project.subject.like("%" + subject + "%");
 		}
 		return null;
 	}
