@@ -1,7 +1,5 @@
 package com.laypact.renew.domain;
 
-import java.time.LocalDate;
-
 import com.laypact.renew.common.audit.AuditBaseEntity;
 
 import jakarta.persistence.Column;
@@ -11,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -26,19 +23,27 @@ import lombok.ToString;
 public class Project extends AuditBaseEntity<String> {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long seq;
 
-	@Column(name = "name", length = 50)
-	private String name;
+	@Column(name = "company", length = 50)
+	private String company;
+	@Column(name = "subject", length = 50)
+	private String subject;
+	@Column(name = "type", length = 50)
+	private String type;
 	@Column(name = "short_desc", length = 500)
 	private String shortDesc;
-	@Column(name = "comp_name", length = 50)
-	private String compName;
-	@Column(name = "start_dt")
-	private LocalDate startDt;
-	@Column(name = "end_dt")
-	private LocalDate endDt;
-	
-	
+	@Column(name = "contents", length = 2000)
+	private String contents;
+	@Column(name = "link", length = 50)
+	private String link;
+	@Column(name = "year", length = 4)
+	private String year;
+	@Column(name = "keyword", length = 200)
+	private String keyword;
+	@Column(name = "image", length = 200)
+	private String image;
+	@Column(name = "thumbnail_image", length = 200)
+	private String thumbnailImage;
 	
 }

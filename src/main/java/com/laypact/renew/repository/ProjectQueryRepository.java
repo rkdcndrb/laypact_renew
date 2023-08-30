@@ -31,7 +31,7 @@ public class ProjectQueryRepository extends QuerydslRepositorySupport {
 	
 	private BooleanExpression likeName(String name) {
 		if(StringUtils.hasText(name)) {
-			return project.name.like("%" + name + "%");
+			return project.subject.like("%" + name + "%");
 		}
 		return null;
 	}

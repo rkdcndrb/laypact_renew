@@ -2,7 +2,6 @@ package com.laypact.renew.service;
 
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import com.laypact.renew.exception.UserNotFoundException;
 import com.laypact.renew.repository.UserRepository;
 
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class LoginService {
