@@ -13,22 +13,24 @@ import com.laypact.renew.service.ProjectService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@RequestMapping("web/")
+@RequestMapping("admin/")
 @Controller
-public class ProjectController {
+public class AdminProjectController {
 	@Autowired
 	public ProjectService projectService;
 	
 	@GetMapping(value = "project")
-	public String webProject(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
+	public String adminProject(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
 		model.addAttribute("projectList", projectService.selectProjectList(param));
 		
-		return "web/project";
+		return "admin/project";
 	}
 	
-	@GetMapping(value = "project-detail")
-	public String webProjectDetail(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
+	@GetMapping(value = "project-write")
+	public String projectWrite(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
+		//model.addAttribute("projectList", projectService.selectProjectList(param));
 		
-		return "web/project-detail";
+		return "admin/project-write";
 	}
+	
 }

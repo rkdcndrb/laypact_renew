@@ -1,0 +1,41 @@
+/* pretendard */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  src: url('../fonts/Pretendard-Regular.woff2') format('woff2'),
+       url('../fonts/Pretendard-Regular.woff') format('woff'),
+	     url('../fonts/Pretendard-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  src: url('../fonts/Pretendard-Medium.woff2') format('woff2'),
+       url('../fonts/Pretendard-Medium.woff') format('woff'),
+	     url('../fonts/Pretendard-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 600;
+  src: url('../fonts/Pretendard-SemiBold.woff2') format('woff2'),
+       url('../fonts/Pretendard-SemiBold.woff') format('woff'),
+	     url('../fonts/Pretendard-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  src: url('../fonts/Pretendard-Bold.woff2') format('woff2'),
+       url('../fonts/Pretendard-Bold.woff') format('woff'),
+	     url('../fonts/Pretendard-Bold.otf') format('opentype');
+}
+
+/* 본명조 */
+@font-face {
+  font-family: 'SourceHanSerif';
+  font-weight: 400;
+  src: url('../fonts/SourceHanSerif-Regular.woff2') format('woff2'),
+       url('../fonts/SourceHanSerif-Regular.woff') format('woff'),
+	     url('../fonts/SourceHanSerif-Regular.otf') format('opentype');
+}
