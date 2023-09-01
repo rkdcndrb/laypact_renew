@@ -1,17 +1,15 @@
 package com.laypact.renew.web;
 
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.laypact.renew.dto.ProjectDto;
 import com.laypact.renew.service.ProjectService;
 
-import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping("web/")
 @Controller
@@ -20,14 +18,14 @@ public class ProjectController {
 	public ProjectService projectService;
 	
 	@GetMapping(value = "project")
-	public String webProject(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
-		model.addAttribute("projectList", projectService.selectProjectList(param));
-		
+	public String webProject(Model model) throws Exception {
+		ProjectDto dto = new ProjectDto();
+		model.addAttribute("projectList",projectService.selectProjectList(dto));
 		return "web/project";
 	}
 	
 	@GetMapping(value = "project-detail")
-	public String webProjectDetail(@RequestParam Map<String, Object> param, HttpServletRequest req, Model model) throws Exception {
+	public String webProjectDetail() throws Exception {
 		
 		return "web/project-detail";
 	}

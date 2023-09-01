@@ -15,15 +15,12 @@ import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-	
-	List<Project> findBySubjectLike(String subject);
-	
+		
 	/*
 	 * JPQL
 	 */
 	@Query("select p from Project p where p.subject like :subject")
 	List<Project> findBySubjectLikeQuery(@Param("subject") String subject);
 	
-	List<Project> findAll();
 
 }

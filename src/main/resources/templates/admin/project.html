@@ -117,7 +117,7 @@
 							<div class="card-body">
 								<h6 class="card-title">Data Table</h6>
 								<div class="table-responsive">
-									<table id="dataTableExample" class="table">
+									<table id="dtProject" class="table">
 										<thead>
 											<tr>
 												<th>No.</th>
@@ -179,6 +179,19 @@
 	<!-- Custom js for this page -->
 	<script src="../../../assets/js/data-table.js"></script>
 	<!-- End custom js for this page -->
+	
+	<script>
+		$(document).ready(function() {
+			let list = [];
+			$.get('/api/project', function(result) {
+				console.log(result);
+				list = result;
+			});
+			
+				
+		});
+			
+	</script>
 
 </body>
 
