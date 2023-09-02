@@ -12,7 +12,9 @@ spring:
   devtools :
     restart :
       enabled: true
-       
+ mvc:
+  hiddenmethod.filter.enabled: true
+  
  jpa:
   database-platform: org.hibernate.dialect.PostgreSQLDialect
   hibernate:   
