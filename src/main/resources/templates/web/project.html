@@ -48,102 +48,15 @@
         <section class="content project01">
           <div class="inner">
             <div class="project-wrap">
-              <p class="project-num fade"><span class="total">0</span>A RECOMMENDED PROJECTS</p>
+              <p class="project-num fade"><span class="total">0</span>RECOMMENDED PROJECTS</p>
               <ul class="project-list lg">
-                <li class="project-item fade">
+				
+                <li th:each="list, stat:${projectList.?[mainYn]}" class="project-item fade">
                   <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Samsung</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Hanwha</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Adidas</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">auction</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade new">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">gmarket</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Lifeplus</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Green Cross</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Homeplus</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade new">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Jejuair</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Ncsoft</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Callaway</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Hyundai E&C</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
+                    <p class="tit">[[${list.company}]]</p>
+                    <span class="sub sub-visible">[[${list.shortDesc}]]</span>
+                    <span class="sub sub-hidden">[[${list.shortDesc}]]</span>
                   </a>
                 </li>
               </ul>
@@ -155,20 +68,20 @@
             <p class="project-list-total project-num fade"><span class="total">0</span></p>
             <div class="project-wrap">
               <p class="project-num fade"><span class="year">2004  -</span>ALL PROJECTS</p>
-              <ul class="project-list sm">
+              <ul class="project-list sm" th:each="list, stat:${projectList}">
                 <li class="project-item fade">
                   <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-sm-bottom-right"></i>
                     <div class="project-info">
-                      <p class="cate">반응형, 캠페인, 브랜딩</p>
-                      <span class="year">2022</span>
-                      <p class="tit">hyundai</p>
-                      <span class="sub sub-visible">detail page project</span>
-                      <span class="sub sub-hidden">detail page project</span>
+                      <p class="cate">[[${list.keyword}]]</p>
+                      <span class="year">[[${list.year}]]</span>
+                      <p class="tit">[[${list.company}]]</p>
+                      <span class="sub sub-visible">[[${list.shortDesc}]]</span>
+                      <span class="sub sub-hidden">[[${list.shortDesc}]]</span>
                     </div>
                   </a>
                 </li>
-                <li class="project-item fade">
+               <!-- <li class="project-item fade">
                   <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-sm-bottom-right"></i>
                     <div class="project-info">
@@ -572,7 +485,7 @@
                       <span class="sub sub-hidden">detail page project</span>
                     </div>
                   </a>
-                </li>
+                </li>-->
               </ul>
             </div>
             <div class="btn-wrap text-c fade">

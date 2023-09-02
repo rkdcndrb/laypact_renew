@@ -49,5 +49,10 @@ public class Project extends AuditBaseEntity<String> {
 	private Boolean mainYn;
 	@Column(name = "use_yn", length = 1)
 	private Boolean useYn;
+	/* 
+	 * 메인 프로젝트 sorting 순서
+	 * */
+	@Column(name = "sort_order")
+	private Integer sortOrder;
 	
 }

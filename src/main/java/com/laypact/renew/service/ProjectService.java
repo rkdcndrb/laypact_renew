@@ -1,10 +1,10 @@
 package com.laypact.renew.service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.laypact.renew.domain.Project;
@@ -25,6 +25,23 @@ public class ProjectService {
 	}
 	
 	public List<Project> selectProjectList(ProjectDto dto) {
-		return projectRepositoty.findAll();
+		if(dto.isUseYn()) {
+			return projectRepositoty.findByUseYn(dto.isUseYn()
+					, sortBySortOrder().and(sortByYear()));
+		}else {
+			return projectRepositoty.findAll(sortByYear());
+		}
 	}
+	
+	public void deleteProject(ProjectDto dto) {
+		projectRepositoty.deleteById(dto.getSeq());
+	}
+	
+	private Sort sortBySortOrder() {
+        return Sort.by(Sort.Direction.ASC, "sortOrder");
+    }
+	
+	private Sort sortByYear() {
+        return Sort.by(Sort.Direction.ASC, "year");
+    }
 }

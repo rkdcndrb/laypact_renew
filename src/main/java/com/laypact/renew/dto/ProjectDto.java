@@ -12,6 +12,11 @@ import lombok.ToString;
 public class ProjectDto {
 
 	private Long seq;
+	private boolean useYn = false;
 	private String sortOption;
+	
+	public void setUseYnTrue () {
+		this.useYn = true;
+	}
 	
 }

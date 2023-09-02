@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.laypact.renew.dto.ProjectDto;
 import com.laypact.renew.service.ProjectService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @RequestMapping("web/")
 @Controller
+@Slf4j
 public class ProjectController {
 	@Autowired
 	public ProjectService projectService;
@@ -20,7 +23,10 @@ public class ProjectController {
 	@GetMapping(value = "project")
 	public String webProject(Model model) throws Exception {
 		ProjectDto dto = new ProjectDto();
+		dto.setUseYnTrue();
 		model.addAttribute("projectList",projectService.selectProjectList(dto));
+		log.info("{}", model.getAttribute("projectList"));
+
 		return "web/project";
 	}
 	
