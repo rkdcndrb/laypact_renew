@@ -275,15 +275,20 @@
 	});
 	
 	function fnSave() {
-		$.ajax({
-	        url: "api/qna/save",
-	        method: "POST",
-	        dataType: "text",
-	        success: function (data) {
-	            $('#output').val(data)
-	            console.log(data)
-	        }
-	    })
+		if($('#saveMode').val() == 'I'){
+			$.ajax({
+		        url: "api/qna/save",
+		        method: "POST",
+		        dataType: "text",
+		        success: function (data) {
+		            $('#output').val(data)
+		            console.log(data)
+		        }
+		    })
+		}else {
+			
+		}
+		
 	}
 	
 	function fnDel() {
