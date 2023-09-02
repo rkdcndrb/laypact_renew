@@ -1,18 +1,24 @@
 package com.laypact.renew.repository;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
 import com.laypact.renew.domain.Qna;
+import com.laypact.renew.dto.QnaDto;
 
 import jakarta.transaction.Transactional;
 
-@Repository
 @Transactional
-public interface QnaRepository extends JpaRepository<Qna, Long> {
+public interface QnaRepository extends Repository<Qna, Long> {
+
+	List<Qna> findByUseYn(boolean useYn);
 	
 	List<Qna> findAll();
-
+	
+	void save(QnaDto dto);
+	
+    Optional<Qna> deleteById(Long id);
+	
 }

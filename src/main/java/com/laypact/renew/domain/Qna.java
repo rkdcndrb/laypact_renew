@@ -4,6 +4,8 @@ import com.laypact.renew.common.audit.AuditBaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,8 +22,8 @@ import lombok.ToString;
 @Table(name = "qna")
 public class Qna extends AuditBaseEntity<String> {
 
-	@Id
-	@Column(name = "seq", length = 75)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seq", length = 5)
 	private long seq;
 	
 	@Column(name = "question", length = 300)

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.laypact.renew.dto.QnaDto;
 import com.laypact.renew.service.ProjectService;
 import com.laypact.renew.service.QnaService;
 
@@ -16,8 +17,8 @@ public class AdminQnaController {
 	public QnaService qnaService;
 	
 	@GetMapping(value = "qna")
-	public String adminQna(Model model) throws Exception {
-		model.addAttribute("qnaList", qnaService.findAll());
+	public String adminQna(Model model, QnaDto dto) throws Exception {
+		model.addAttribute("qnaList", qnaService.findQnaList(dto));
 		return "admin/qna";
 	}
 }

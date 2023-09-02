@@ -21,8 +21,7 @@ public class AdminProjectController {
 	public ProjectService projectService;
 	
 	@GetMapping(value = "project")
-	public String adminProject(Model model) throws Exception {
-		ProjectDto dto = new ProjectDto();
+	public String adminProject(Model model, ProjectDto dto) throws Exception {
 		model.addAttribute("projectList",projectService.selectProjectList(dto));
 		return "admin/project";
 	}

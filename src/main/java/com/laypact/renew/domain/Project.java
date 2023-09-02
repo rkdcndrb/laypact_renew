@@ -23,6 +23,7 @@ import lombok.ToString;
 public class Project extends AuditBaseEntity<String> {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seq", length = 5)
 	private Long seq;
 
 	@Column(name = "company", length = 50)

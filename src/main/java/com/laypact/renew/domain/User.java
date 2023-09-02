@@ -25,8 +25,8 @@ import lombok.ToString;
 @Table(name = "users")
 public class User extends AuditBaseEntity<String> {
 
-	@Id
-	@Column(name = "seq", length = 75)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "seq", length = 5)
 	private long seq;
 	
 	@Column(name = "name", length = 50)

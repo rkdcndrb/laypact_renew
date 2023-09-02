@@ -25,8 +25,8 @@ public class ProjectService {
 	}
 	
 	public List<Project> selectProjectList(ProjectDto dto) {
-		if(dto.isUseYn()) {
-			return projectRepositoty.findByUseYn(dto.isUseYn()
+		if(dto.getUseYn()) {
+			return projectRepositoty.findByUseYn(dto.getUseYn()
 					, sortBySortOrder().and(sortByYear()));
 		}else {
 			return projectRepositoty.findAll(sortByYear());
