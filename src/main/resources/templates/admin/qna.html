@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Laypact</title>
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+	<!-- End fonts -->
+
+	<!-- core:css -->
+	<link rel="stylesheet" href="../../../assets/vendors/core/core.css">
+	<!-- endinject -->
+
+	<!-- Plugin css for this page -->
+	<link rel="stylesheet" href="../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+	<!-- End plugin css for this page -->
+
+	<!-- inject:css -->
+	<link rel="stylesheet" href="../../../assets/fonts/feather-font/css/iconfont.css">
+	<link rel="stylesheet" href="../../../assets/vendors/flag-icon-css/css/flag-icon.min.css">
+	<!-- endinject -->
+
+	<!-- Layout styles -->
+	<link rel="stylesheet" href="../../../assets/css/demo1/style.css">
+	<!-- End layout styles -->
+
+	<link rel="shortcut icon" href="../../../assets/images/favicon.png" />
+</head>
+
+<body>
+	<div class="main-wrapper">
+
+		<!-- partial:../../partials/_sidebar.html -->
+		<nav class="sidebar">
+			<div class="sidebar-header">
+				<a href="#" class="sidebar-brand">
+					Laypact<span>ADMIN</span>
+				</a>
+				<div class="sidebar-toggler not-active">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			<div class="sidebar-body">
+				<ul class="nav">
+					<li class="nav-item nav-category">List</li>
+					<li class="nav-item">
+						<a href="admin/project" class="nav-link">
+							<i class="link-icon" data-feather="box"></i>
+							<span class="link-title">Project</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="admin/qna" class="nav-link">
+							<i class="link-icon" data-feather="box"></i>
+						<span class="link-title">Q&A</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- partial -->
+
+		<div class="page-wrapper">
+
+			<!-- partial:../../partials/_navbar.html -->
+			<nav class="navbar">
+				<a href="#" class="sidebar-toggler">
+					<i data-feather="menu"></i>
+				</a>
+				<div class="navbar-content">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30"
+									alt="profile">
+							</a>
+							<div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
+								<div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
+									<div class="mb-3">
+										<img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80"
+											alt="">
+									</div>
+									<div class="text-center">
+										<p class="tx-16 fw-bolder">Laypact</p>
+										<p class="tx-12 text-muted">laypact@gmail.com</p>
+									</div>
+								</div>
+								<ul class="list-unstyled p-1">
+									<li class="dropdown-item py-2">
+										<a href="javascript:;" class="text-body ms-0">
+											<i class="me-2 icon-md" data-feather="log-out"></i>
+											<span>Log Out</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- partial -->
+
+			<div class="page-content">
+
+				<nav class="page-breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Q&A</a></li>
+					</ol>
+				</nav>
+
+				<div class="row">
+					<div class="col-md-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="dataTableExample" class="table">
+										<thead>
+											<tr>
+												<th style="display: none;">seq</th>
+												<th>No.</th>
+												<th>Question</th>
+												<th>사용여부</th>
+												<th style="display: none;">main</th>
+												<th style="display: none;">sub</th>
+											</tr>
+										</thead>
+										<tbody id="qnaArea">
+											<tr th:each="qna,stat:${qnaList}">
+												<td style="display: none;">[[${qna.seq}]]</td>
+												<td>[[${stat.count}]]</td>
+												<td>[[${qna.question}]]</td>
+												<td>[[${qna.useYn}]]</td>
+												<td style="display: none;">[[${qna.ansMain}]]</td>
+												<td style="display: none;">[[${qna.ansSub}]]</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div style="text-align:right;border-bottom:1px solid #dee2e6; padding-right:10px; padding-bottom:10px;">
+								<button type="button" id="btn-modal1" class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#modal1">
+									<i class="btn-icon-prepend" data-feather="plus"></i>Q&A 등록 
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal -->
+			    <div id="modal1" class="modal fade bd-example-modal-lg" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+			      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+			        <div class="modal-content">
+			          <div class="modal-header" style="padding-top:13px;padding-bottom:13px;">
+			            <h4 class="modal-title">Q&A 등록</h4>
+			            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close" style="font-size: 20px;"></button>
+			          </div>
+						<div class="modal-body">
+							<form id="frm" method="post">
+								<input type="hidden" id="saveMode" name="saveMode" value="I"/>
+								<input type="hidden" id="seq" name="seq"/>
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="mb-3">
+											<label for="category" class="form-label">질문 </label>
+											<textarea class="form-control" id="question" name="question" rows="1" maxlength="100"></textarea>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="mb-3">
+											<label for="useY" class="form-label">사용여부</label>
+											<div>
+						                      	<select class="form-select" id="useYn" name="useYn">
+						                      		<option value="true">Y</option>
+						                      		<option value="false">N</option>
+												</select>
+						                    </div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="mb-3">
+											<label for="subject" class="form-label">MAIN ANS</label>
+											<textarea class="form-control" id="ansMain" name="ansMain" rows="2" maxlength="100"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="mb-3">
+											<label for="contents" class="form-label">SUB ANS</label>
+											<textarea class="form-control" id="ansSub" name="ansSub" rows="2" maxlength="1000"></textarea>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="btnDel" class="btn btn-danger btn-icon-text" onclick="fnDel()" style="display:none;position:absolute;left:10px;">
+								<i class="btn-icon-prepend" data-feather="trash-2"></i>
+								<span>삭제</span>
+							</button>
+							<button type="button" id="btnSave" class="btn btn-primary btn-icon-text" onclick="fnSave()">
+								<i class="btn-icon-prepend" data-feather="save"></i>
+								<span>저장</span>
+							</button>
+			            </div>
+			        </div>
+			      </div>
+			    </div>
+			</div>
+
+			<!-- partial:../../partials/_footer.html -->
+			<footer
+				class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+				<p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="https://www.nobleui.com"
+						target="_blank">NobleUI</a>.</p>
+				<p class="text-muted">Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm"
+						data-feather="heart"></i></p>
+			</footer>
+			<!-- partial -->
+
+		</div>
+	</div>
+
+	<!-- core:js -->
+	<script src="../../../assets/vendors/core/core.js"></script>
+	<!-- endinject -->
+
+	<!-- Plugin js for this page -->
+	<script src="../../../assets/vendors/datatables.net/jquery.dataTables.js"></script>
+	<script src="../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+	<!-- End plugin js for this page -->
+
+	<!-- inject:js -->
+	<script src="../../../assets/vendors/feather-icons/feather.min.js"></script>
+	<script src="../../../assets/js/template.js"></script>
+	<!-- endinject -->
+
+	<!-- Custom js for this page -->
+	<script src="../../../assets/js/data-table.js"></script>
+	<!-- End custom js for this page -->
+
+	<script>
+	$(document).ready(function(){
+		$('#modal1').on('hide.bs.modal', function (e) {
+        	$("#modal1 #saveMode").val("I");
+        	$("#modal1 #seq").val("");
+        	$("#modal1 #question").val("");
+        	$("#modal1 #useYn").val("true").prop("selected", true);
+        	$("#modal1 #ansMain").val("");
+        	$("#modal1 #ansSub").val("");
+        	$("#btnDel").hide();
+       	});
+		
+		$("#qnaArea").on('click', 'tr', function(e) {
+			$('#saveMode').val("U");
+			$('#seq').val($(this).find('td').eq(0).text());
+			$('#question').val($(this).find('td').eq(2).text());
+			$("#useYn").val($(this).find('td').eq(3).text()).prop("selected", true);
+			$('#ansMain').val($(this).find('td').eq(4).text());
+			$('#ansSub').val($(this).find('td').eq(5).text());
+            $('#btnDel').show();
+            $('#btn-modal1').click();
+        });
+	});
+	
+	function fnSave() {
+		$.ajax({
+	        url: "api/qna/save",
+	        method: "POST",
+	        dataType: "text",
+	        success: function (data) {
+	            $('#output').val(data)
+	            console.log(data)
+	        }
+	    })
+	}
+	
+	function fnDel() {
+		
+	}
+	</script>
+</body>
+
+</html>
