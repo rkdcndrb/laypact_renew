@@ -38,7 +38,7 @@
     </div>
   </header>
 
-  <a href="index.html" class="hi" data-hover data-hover-msg="Go to<br/>Home">
+  <a href="/index" class="hi" data-hover data-hover-msg="Go to<br/>Home">
     <p>Hello, We’re laypact</p>
     <div class="sub-hi">
       <span>our philosophy is</span>
@@ -101,110 +101,22 @@
         </section>
         <section class="content main03">
           <div class="inner">
-            <div class="project-wrap">
-              <p class="project-num fade"><span>012</span>A RECOMMENDED PROJECTS</p>
+            <div class="project-wrap" th:with="mainList=${projectList.?[mainYn]}">
+              <p class="project-num fade"><span th:text="${#lists.size(mainList)}"/>RECOMMENDED PROJECTS</p>
               <ul class="project-list lg">
-                <li class="project-item fade">
+                <li th:each="list, stat:${mainList}" class="project-item fade" >
                   <a href="web/project-detail#sa" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Samsung</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#ha" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Hanwha</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#ad" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Adidas</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#au" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">auction</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade new">
-                  <a href="web/project-detail#gm" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">gmarket</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#li" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Lifeplus</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade new">
-                  <a href="web/project-detail#gr" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Green Cross</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#ho" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Homeplus</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade new">
-                  <a href="web/project-detail#je" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Jejuair</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#nc" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Ncsoft</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#ca" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Callaway</p>
-                    <span class="sub sub-visible">Lorem ipsum dolor sit amet</span>
-                    <span class="sub sub-hidden">Lorem ipsum dolor sit amet</span>
-                  </a>
-                </li>
-                <li class="project-item fade">
-                  <a href="web/project-detail#hy" data-hover data-hover-msg="Go to<br/>Project Detail">
-                    <i class="ico ico-arrow-bottom-right"></i>
-                    <p class="tit">Hyundai E&C</p>
-                    <span class="sub sub-visible">Auction smart dellvery promotion tvc</span>
-                    <span class="sub sub-hidden">Auction smart dellvery promotion tvc</span>
+                    <p class="tit">[[${list.company}]]</p>
+                    <span class="sub sub-visible">>[[${list.shortDesc}]]</span>
+                    <span class="sub sub-hidden">>[[${list.shortDesc}]]</span>
                   </a>
                 </li>
               </ul>
             </div>
             <div class="btn-wrap text-c fade">
-              <a href="sub/project.html" class="btn horizen" data-hover data-hover-msg="Go to<br/>Project">
-                <p class="line lg"><span class="num">268</span><span class="txt">View all projects</span></p>
+              <a href="/web/project" class="btn horizen" data-hover data-hover-msg="Go to<br/>Project">
+                <p class="line lg"><span class="num" th:text="${#lists.size(projectList)}" /><span class="txt">View all projects</span></p>
                 <i class="ico ico-arrow-bottom-right"></i>
               </a>
             </div>
@@ -230,109 +142,13 @@
                         <p class="txt" th:if="${not #strings.isEmpty(qna.ansSub)}" th:utext="${qna.ansSub}"></p>
                       </div>
                     </div>
-                  </div>
-                  <!--<div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>내 웹사이트가 스마트폰과 태블릿에서도 작동할까요?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">속의 경, 멀리 오는 별을 강아지, 남은 지나가는 나의 있습니다. <br/>아침이 다 애기 위에 까닭이요, 이제 새워 무덤 봅니다.</p>
-                        <p class="txt">시와 이제 하나 이름자를 가을 한 프랑시스 듯합니다. 하나에 멀리 까닭이요, 보고, 내일 듯합니다. 까닭이요, 다 걱정도 있습니다. <br/>무성할 묻힌 하나에 아름다운 나의 까닭이요, 까닭입니다. 헤일 이름과, 밤을 계십니다. 위에 어머니, 말 이런 봄이 패, 봅니다.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>이미 웹사이트가 있는데, 변경하기가 얼마나 쉽나요?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">멀리 토끼, 동경과 차 이름과 다하지 비둘기, 계십니다. <br/>패, 하나 시와 가을 무성할 이제 까닭입니다. 잔디가 풀이 가난한 별 듯합니다.</p>
-                        <p class="txt">쉬이 차 어머니 계십니다. 별 하나에 나는 나의 하나에 어머님, 자랑처럼 것은 이름자를 봅니다. 나는 것은 이름과, 별 사랑과 나의 버리었습니다. <br/>써 이름자 피어나듯이 마리아 지나가는 별 이름과, 청춘이 어머니, 버리었습니다. 별 둘 했던 아직 노루, 오면 있습니다.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>디자인과 개발에 대한 견적 지급 조건은 어떻게 되나요?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">둘 밤이 하나에 계십니다. 노루, 둘 흙으로 아직 봅니다. <br/>노새, 패, 쓸쓸함과 별에도 별 있습니다.</p>
-                        <p class="txt">시와 같이 시인의 거외다. 계절이 별들을 아스라히 된 이름과, 있습니다. 가을 남은 나는 피어나듯이 까닭입니다. 이름을 사랑과 시인의 이 너무나 까닭입니다. 하나에 한 봄이 별 까닭입니다.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>웹 디자인에서 CMS란 무엇인가요?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">CMS는 Content Management System <br/>콘텐츠 관리 시스템의 약자입니다.</p>
-                        <p class="txt">콘텐츠란 ‘내용물’이라는 뜻으로 상당히 포괄적인 용어이지만 일반적으로 컴퓨터나 인터넷 분야에서는 ‘컴퓨터 파일’, ‘이미지나 오디오 등의 멀티미디어 파일’, ‘전자 문서’, ‘웹 콘텐콘’ 등을 말합니다. <br/>현재는 웹(World Wide Web)의 성장과 더불어서 ‘웹 콘텐츠’가 다양한 멀티미디어 파일과 전자 문서를 포괄하는 개념으로 확대되었습니다. 넓은 의미의 ‘웹 콘텐츠”는 HTML를 이용하는 모든 문서와 서비스(블로그, 게시판, 검색 엔진 등), 그리고 그 안에 포함된 모든 파일과 데이터를 뜻합니다.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>웹 디자인에서 UX는 무엇을 의미합니까?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">남은 시와 내 다하지 까닭입니다. <br/>소학교 한 나는 어머님, 하나에 별 다 까닭입니다.</p>
-                        <p class="txt">하나에 이름과, 당신은 하나의 이름자를 계십니다. 피어나듯이 노루, 별빛이 이름과 내린 토끼, 그러나 마디씩 많은 계십니다. <br/>써 않은 멀리 보고, 벌써 멀듯이, 이런 이네들은 계십니다. 이네들은 파란 가슴속에 있습니다. 다하지 피어나듯이 이름을 이 된 봅니다.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="qa-item fade">
-                    <button class="qa-btn">
-                      <i class="ico ico-arrow-sm-bottom-right"></i>
-                      <div class="q-wrap">
-                        <p>도메인을 누가 소유하게 되나요?</p>
-                        <span class="sub">QUESTIONS</span>
-                      </div>
-                    </button>
-                    <div class="qa-content">
-                      <span>ANSWER</span>
-                      <div class="a-wrap">
-                        <p class="tit">하나 가을로 애기 위에도 새겨지는 별 있습니다. <br/>멀듯이, 지나고 딴은 어머니, 아침이 봅니다.</p>
-                        <p class="txt">무성할 자랑처럼 불러 위에 언덕 별들을 별이 있습니다. 무엇인지 마리아 다 별 사랑과 피어나듯이 까닭입니다. <br/>헤일 않은 별에도 봅니다. 보고, 않은 계절이 묻힌 까닭이요, 있습니다. 오면 내 하나에 어머님, 까닭입니다. 별을 하나에 소학교 아무 아이들의 밤이 이름자 계십니다.</p>
-                      </div>
-                    </div>
-                  </div>-->
+                  </div>                  
                 </div>
               </div>
             </div>
             <div class="btn-wrap text-c fade">
               <a href="https://www.naver.com/" class="btn horizen" data-hover data-hover-msg="Go to<br/>Contact">
-                <p class="line lg"><span class="num">062</span><span class="txt">View all faq</span></p>
+                <p class="line lg"><span class="num" th:text="${#lists.size(qnaList)}" /><span class="txt">View all faq</span></p>
                 <i class="ico ico-arrow-bottom-right"></i>
               </a>
             </div>

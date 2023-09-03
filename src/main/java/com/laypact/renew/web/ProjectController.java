@@ -26,7 +26,6 @@ public class ProjectController {
 		ProjectDto dto = new ProjectDto();
 		dto.setUseYnTrue();
 		model.addAttribute("projectList",projectService.selectProjectList(dto));
-		log.info("{}", model.getAttribute("projectList"));
 
 		return "web/project";
 	}

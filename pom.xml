@@ -15,10 +15,10 @@
 	<name>laypact</name>
 	<description>laypact project</description>
 	<properties>
-	    <maven.compiler.source>11</maven.compiler.source>
-	    <maven.compiler.target>11</maven.compiler.target>
+	    <java.version>17</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <querydsl.version>5.0.0</querydsl.version>
+	    <maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -120,7 +120,6 @@
 	                        <goal>process</goal>
 	                    </goals>
 	                    <configuration>
-	                        <outputDirectory>target/generated-sources/java</outputDirectory>
 	                        <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 	                    </configuration>
 	                </execution>
