@@ -3,6 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<!-- profile 추가: local, dev, prod -->
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<environment>local</environment>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<environment>dev</environment>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<environment>prod</environment>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+	</profiles>
+	
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -18,7 +43,6 @@
 	    <java.version>17</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <querydsl.version>5.0.0</querydsl.version>
-	    <maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
