@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.laypact.renew.dto.ProjectDto;
 import com.laypact.renew.service.ProjectService;
@@ -31,8 +32,10 @@ public class ProjectController {
 	}
 	
 	@GetMapping(value = "project-detail")
-	public String webProjectDetail() throws Exception {
-		
+	public String webProjectDetail(@RequestParam long seq, Model model) throws Exception {
+		ProjectDto dto = new ProjectDto();
+		dto.setSeq(seq);
+		model.addAttribute("detail", projectService.selectProject(dto).get());
 		return "web/project-detail";
 	}
 }
