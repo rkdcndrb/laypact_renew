@@ -12,6 +12,18 @@ import lombok.ToString;
 public class ProjectDto {
 
 	private Long seq;
+	private String subject;
+	private String company;
+	private String year;
+	private String link;
+	private String type;
+	private String keyword;
+	private String image;
+	private String thumbnailImage;
+	private String shortDesc;
+	private String contentsKr;
+	private String contentsEn;
+	private Boolean mainYn;
 	private Boolean useYn = false;
 	private String sortOption;
 	

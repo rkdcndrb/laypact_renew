@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @Getter
 @Entity
 @Table(name = "project")
+@Builder
 public class Project extends AuditBaseEntity<String> {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +36,10 @@ public class Project extends AuditBaseEntity<String> {
 	private String type;
 	@Column(name = "short_desc", length = 500)
 	private String shortDesc;
-	@Column(name = "contents", length = 2000)
-	private String contents;
+	@Column(name = "contentsKr", length = 2000)
+	private String contentsKr;
+	@Column(name = "contentsEn", length = 2000)
+	private String contentsEn;
 	@Column(name = "link", length = 50)
 	private String link;
 	@Column(name = "year", length = 4)

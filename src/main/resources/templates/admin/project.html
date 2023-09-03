@@ -31,6 +31,41 @@
 	<!-- End layout styles -->
 
 	<link rel="shortcut icon" href="../../../assets/images/favicon.png" />
+	
+	<style>
+		table {
+			width: 100% !important;
+		}
+        .table th, .table td {
+        	white-space: normal;
+        }
+        .table td img {
+        	width: 200px;
+        	height: 114px;
+        	border-radius: 0px;
+        }
+        
+        fieldset {
+        	padding: 0px 20px;
+        	margin: inherit;
+			border: 1px solid rgb(192, 192, 192);
+			border-radius: 10px;
+		}
+		legend {
+			float: none;
+			width: auto;
+			padding: 0px 5px;
+			font-size: large;
+			font-weight: bold;
+		}
+        .dropify-wrapper {
+        	width: 248px !important;
+        	height: 140px !important;
+        }
+		.dropify-wrapper .dropify-preview {
+			padding: 0px;
+		}
+	</style>
 </head>
 
 <body>
@@ -52,9 +87,15 @@
 				<ul class="nav">
 					<li class="nav-item nav-category">List</li>
 					<li class="nav-item">
-						<a href="../../dashboard.html" class="nav-link">
+						<a href="/admin/project" class="nav-link">
 							<i class="link-icon" data-feather="box"></i>
 							<span class="link-title">Project</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/admin/qna" class="nav-link">
+							<i class="link-icon" data-feather="box"></i>
+						<span class="link-title">Q&A</span>
 						</a>
 					</li>
 				</ul>
@@ -104,40 +145,59 @@
 			<!-- partial -->
 
 			<div class="page-content">
-
-				<nav class="page-breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">Project</a></li>
-					</ol>
-				</nav>
+				<div style="text-align:right;border-bottom:1px solid #dee2e6;">
+					<button type="button" id="btn-modal1" class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#modal1">
+						PROJECT 등록 
+					</button>
+				</div>
 
 				<div class="row">
 					<div class="col-md-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<h6 class="card-title">Data Table</h6>
+								<h6 class="card-title">대표 프로젝트</h6>
 								<div class="table-responsive">
-									<table id="dtProject" class="table">
+									<table id="mainTable" class="table">
 										<thead>
 											<tr>
+												<th style="display: none;">seq</th>
+												<th style="display: none;">type</th>
+												<th style="display: none;">키워드</th>
+												<th style="display: none;">mainYn</th>
+												<th style="display: none;">한글설명</th>
+												<th style="display: none;">영문설명</th>
+												<th style="display: none;">link</th>
+												<th style="display: none;">image</th>
+												<th style="display: none;">thumbnail</th>
 												<th>No.</th>
 												<th>고객사</th>
 												<th>제목</th>
 												<th>타입</th>
 												<th>작업 연도</th>
-												<th>대표여부</th>
 												<th>사용여부</th>
+												<th>대표여부</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr th:each="list, stat:${projectList}" th:onclick="|location.href='@{project-write(seq=${list.seq})}'|">
+										<tbody id="mainArea">
+											<tr th:each="main, stat:${projectList.?[mainYn]}">
+												<td style="display: none;">[[${main.seq}]]</td>
+												<td style="display: none;">[[${main.type}]]</td>
+												<td style="display: none;">[[${main.keyword}]]</td>
+												<td style="display: none;">[[${main.mainYn}]]</td>
+												<td style="display: none;">[[${main.contentsKr}]]</td>
+												<td style="display: none;">[[${main.contentsEn}]]</td>
+												<td style="display: none;">[[${main.link}]]</td>
+												<td style="display: none;">[[${main.image}]]</td>
+												<td style="display: none;">[[${main.thumbnailImage}]]</td>
 												<td>[[${stat.count}]]</td>
-												<td>[[${list.company}]]</td>
-												<td>[[${list.subject}]]</td>
-												<td>[[${list.type}]]</td>
-												<td>[[${list.year}]]</td>
-												<td>[[${list.mainYn}]]</td>
-												<td>[[${list.useYn}]]</td>
+												<td>[[${main.company}]]</td>
+												<td><span style='font-size:18px;font-weight:500;' class="subj">[[${main.subject}]]</span>
+													<br/><span class="shortD">[[${main.shortDesc}]]</span>
+												</td>
+												<td>[[${main.type}]]</td>
+												<td>[[${main.year}]]</td>
+												<td>[[${main.useYn}]]</td>
+												<td><input type="checkbox" class="select-tree-checkbox" checked /> </td>
 											</tr>
 										</tbody>
 									</table>
@@ -146,7 +206,172 @@
 						</div>
 					</div>
 				</div>
-
+				
+				<div class="row">
+					<div class="col-md-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<h6 class="card-title">일반 프로젝트</h6>
+								<div class="table-responsive">
+									<table id="subTable" class="table">
+										<thead>
+											<tr>
+												<th style="display: none;">seq</th>
+												<th style="display: none;">type</th>
+												<th style="display: none;">키워드</th>
+												<th style="display: none;">mainYn</th>
+												<th style="display: none;">한글설명</th>
+												<th style="display: none;">영문설명</th>
+												<th style="display: none;">link</th>
+												<th style="display: none;">image</th>
+												<th style="display: none;">thumbnail</th>
+												<th>No.</th>
+												<th>고객사</th>
+												<th>제목</th>
+												<th>타입</th>
+												<th>작업 연도</th>
+												<th>사용여부</th>
+												<th>대표여부</th>
+											</tr>
+										</thead>
+										<tbody id="subArea">
+											<tr th:each="sub, stat:${projectList.?[!mainYn]}">
+												<td style="display: none;">[[${sub.seq}]]</td>
+												<td style="display: none;">[[${sub.type}]]</td>
+												<td style="display: none;">[[${sub.keyword}]]</td>
+												<td style="display: none;">[[${sub.mainYn}]]</td>
+												<td style="display: none;">[[${sub.contentsKr}]]</td>
+												<td style="display: none;">[[${sub.contentsEn}]]</td>
+												<td style="display: none;">[[${sub.link}]]</td>
+												<td style="display: none;">[[${sub.image}]]</td>
+												<td style="display: none;">[[${sub.thumbnailImage}]]</td>
+												<td>[[${stat.count}]]</td>
+												<td>[[${sub.company}]]</td>
+												<td><span style='font-size:18px;font-weight:500;' class="subj">[[${sub.subject}]]</span>
+													<br/><span class="shortD">[[${sub.shortDesc}]]</span>
+												</td>
+												<td>[[${sub.type}]]</td>
+												<td>[[${sub.year}]]</td>
+												<td>[[${sub.useYn}]]</td>
+												<td><input type="checkbox" class="select-tree-checkbox" /></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Modal -->
+	    <div id="modal1" class="modal fade bd-example-modal-xl" tabindex="-1" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+	      <div class="modal-dialog modal-xl modal-dialog-scrollable" style="width:947px;">
+	        <div class="modal-content">
+	          <div class="modal-header" style="padding-top:13px;padding-bottom:13px;">
+	            <h4 class="modal-title">PROJECT 등록</h4>
+	            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close" style="font-size: 20px;"></button>
+	          </div>
+				<div class="modal-body">
+					<form id="frm" enctype="multipart/form-data" method="post">
+						<input type="hidden" id="saveMode" name="saveMode" value="I"/>
+						<input type="hidden" id="seq" name="seq"/>
+						<fieldset class="mb-3">
+							<legend>기본정보</legend>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="mb-3">
+										<label for="year" class="form-label">연도</label>
+										<select class="form-select" id="year" name="year">
+											<option value="2024">2024</option>
+				                      		<option value="2023" selected>2023</option>
+				                      		<option value="2022">2022</option>
+				                      		<option value="2021">2021</option>
+				                      		<option value="2020">2020</option>
+										</select>
+									</div>
+									<div class="mb-3">
+										<label class="form-label">고객사</label>
+		               					<input type="text" id="company" name="company" class="form-control" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">프로젝트 명</label>
+		               					<input type="text" id="subject" name="subject" class="form-control" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">프로젝트 요약</label>
+		               					<input type="text" id="shortDesc" name="shortDesc" class="form-control" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">키워드</label>
+		               					<input type="text" id="keyword" name="keyword" class="form-control" />
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="mb-3">
+										<label for="useYn" class="form-label">게시여부</label>
+										<select class="form-select" id="useYn" name="useYn">
+				                      		<option value="true" selected>Y</option>
+				                      		<option value="false">N</option>
+										</select>
+									</div>
+									<div class="mb-3">
+										<label for="mainYn" class="form-label">대표 프로젝트</label>
+										<select class="form-select" id="mainYn" name="mainYn">
+											<option value="false" selected>N</option>
+				                      		<option value="true">Y</option>
+										</select>
+									</div>
+									<div class="mb-3">
+										<label for="type" class="form-label">프로젝트 구분</label>
+										<select class="form-select" id="type" name="type">
+											<option value="NAME PROJECT" selected>NAME PROJECT</option>
+				                      		<option value="IMAGE PROJECT">IMAGE PROJECT</option>
+				                      		<option value="DETAIL PAGE PROJECT">DETAIL PAGE PROJECT</option>
+										</select>
+									</div>
+									<div class="mb-3" id="thumbnailArea">
+										<label for="thumbnail" class="form-label">썸네일</label>
+										<input type="file" id="thumbnailImage" name="thumbnailImage" />
+									</div>
+									<div class="mb-3" id="imageArea" style="display: none;">
+										<label for="image" class="form-label">대표 이미지</label>
+										<input type="file" id="image" name="image" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset id="detailArea" style="display: none;">
+							<legend>PROJECT 상세</legend>
+							<div class="row mb-3">
+								<div class="col-sm-12">
+									<label class="form-label">LINK</label>
+	               					<input type="text" id="link" name="link" class="form-control" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="form-label">한글 설명</label>
+								<textarea class="form-control" name="contentsKr" id="contentsKr" rows="5"></textarea>
+							</div>
+							<div class="row mb-3">
+								<label class="form-label">영문 설명</label>
+								<textarea class="form-control" name="contentsEn" id="contentsEn" rows="5"></textarea>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="btnDel" class="btn btn-danger btn-icon-text" onclick="fnDel()" style="display:none;position:absolute;left:10px;">
+						<i class="btn-icon-prepend" data-feather="trash-2"></i>
+						<span>삭제</span>
+					</button>
+					<button type="button" id="btnSave" class="btn btn-primary btn-icon-text" onclick="fnSave()">
+						<i class="btn-icon-prepend" data-feather="save"></i>
+						<span>저장</span>
+					</button>
+	            </div>
+	        </div>
+	      </div>
+	    </div>
 			</div>
 
 			<!-- partial:../../partials/_footer.html -->
@@ -180,19 +405,205 @@
 	<script src="../../../assets/js/data-table.js"></script>
 	<!-- End custom js for this page -->
 	
-	<script>
+	<script th:inline="javascript">
+	/*<![CDATA[*/
 		$(document).ready(function() {
-			let list = [];
-			$.get('/api/project', function(result) {
-				console.log(result);
-				list = result;
+			$(document).on('click', '#mainArea td input', function() {
+				if(confirm("대표 프로젝트를 해지하겠습니까?")) { 
+					let seq = $(this).parents('td').siblings().eq(0).text();
+					let mainYn = false;
+					$.ajax({
+						type: "PUT"
+						, contentType: "application/json"
+						, url : `/api/project/${seq}/${mainYn}`
+						,success: function() {
+							location.reload();
+						},error:function(){
+							alert("error");
+						}
+					});
+				}
 			});
 			
-				
-		});
+			$(document).on('click', '#subArea td input', function() {
+				if(confirm("대표 프로젝트로 등록하시겠습니까?")){
+					let seq = $(this).parents('td').siblings().eq(0).text();
+					let mainYn = true;
+					$.ajax({
+						type: "PUT"
+						, contentType: "application/json"
+						, url : `/api/project/${seq}/${mainYn}`
+						,success: function() {
+							location.reload();
+						},error:function(){
+							alert("error");
+						}
+					});
+				}
+			});
 			
+			$("#type").change(function(){
+                if($(this).val() == "DETAIL PAGE PROJECT"){
+					$('#thumbnailArea').hide();
+                    $('#imageArea').show();
+                    $('#detailArea').show();
+                } else {
+					$('#thumbnailArea').show();
+                    $('#imageArea').hide();
+                    $('#detailArea').hide();
+				}
+            });
+            
+            $('#modal1').on('hide.bs.modal', function (e) {
+	        	$("#modal1 #saveMode").val("I");
+	        	$("#modal1 #seq").val("");
+	        	$("#modal1 #type").val("NAME PROJECT").prop("selected", true);
+	        	$("#modal1 #useYn").val("true").prop("selected", true);
+	        	$("#modal1 #mainYn").val("true").prop("selected", true);
+	        	$("#modal1 #year").val("2023").prop("selected", true);
+	        	$("#modal1 #keyword").val("");
+	        	$("#modal1 #contentsKr").val("");
+	        	$("#modal1 #contentsEn").val("");
+	        	$("#modal1 #link").val("");
+	        	$("#modal1 #subject").val("");
+	        	$("#modal1 #shortDesc").val("");
+	        	$("#modal1 #company").val("");
+	        	$('#thumbnailArea').show();
+                $('#imageArea').hide();
+                $('#detailArea').hide();
+	        	$("#btnDel").hide();
+	       	});
+            
+            $(document).on('click', '.table tbody td:not(:last-child)', function() {
+				let td = $(this).parents('tr').find('td');
+				$('#saveMode').val("U");
+				$('#seq').val(td.eq(0).text());
+				$('#type').val(td.eq(1).text());
+				$('#keyword').val(td.eq(2).text());
+				$('#mainYn').val(td.eq(3).text());
+				$('#contentsKr').val(td.eq(4).text());
+				$('#contentsEn').val(td.eq(5).text());
+				$('#link').val(td.eq(6).text());
+				$('#subject').val(td.find('.subj').text());
+				$('#shortDesc').val(td.find('.shortD').text());
+				$('#company').val(td.eq(10).text());
+				$('#year').val(td.eq(13).text());
+				$('#useYn').val(td.eq(14).text());
+				if($('#type').val()=='DETAIL PAGE PROJECT') {
+					$('#thumbnailArea').hide();
+                    $('#imageArea').show();
+                    $('#detailArea').show();
+				}else{
+					$('#thumbnailArea').show();
+                    $('#imageArea').hide();
+                    $('#detailArea').hide();
+				}
+				$('#btnDel').show();
+			});
+			
+			$('#mainTable').DataTable({
+				destroy: true,
+                processing: true,
+                responsive: true,
+                autoFill: false,
+                scrollY: true,
+                scrollX: true,
+                scrollCollapse: true,
+                autoWidth: false,
+                paging: false,
+                info: false,
+                order: [0, "asc"],
+                
+				initComplete : function() {
+					let api = this.api();
+					
+					// 테이블 로우 onclick 이벤트 등록 
+					api.on('click', 'tbody td:not(:last-child)', function () {
+						$('#btn-modal1').click();
+					});
+				}
+			})
+			
+			$('#subTable').DataTable({
+				destroy: true,
+                processing: true,
+                responsive: true,
+                autoFill: false,
+                scrollY: true,
+                scrollX: true,
+                scrollCollapse: true,
+                autoWidth: false,
+                paging: false,
+                info: false,
+                order: [0, "asc"],
+                
+				initComplete : function() {
+					let api = this.api();
+					
+					// 테이블 로우 onclick 이벤트 등록 
+					api.on('click', 'tbody td:not(:last-child)', function () {
+						$('#btn-modal1').click();
+					});
+				}
+			})
+			
+			//$("#dataTable1_wrapper .row:first").hide();
+			
+		});
+		
+		function fnSave() {
+			let formData = new FormData($('#frm')[0]);
+			
+			if($('#saveMode').val()=='I') {
+				$.ajax({
+					type: "POST"
+					, contentType: false
+					, processData: false
+					, enctype: "multipart/form-data"
+					, url : "/api/project"
+					, data: formData
+					,success: function() {
+						alert("등록되었습니다.");
+						location.reload();
+					},error:function(){
+						alert("error");
+					}
+				});
+			}else{
+				$.ajax({
+					type: "PUT"
+					, contentType: false
+					, processData: false
+					, enctype: "multipart/form-data"
+					, url : "/api/project"
+					, data: formData
+					,success: function() {
+						alert("수정되었습니다.");
+						location.reload();
+					},error:function(){
+						alert("error");
+					}
+				});
+			}
+		}
+		
+		function fnDel() {
+			if(confirm("삭제하시겠습니까?")) {
+				let seq = $('#seq').val();
+				$.ajax({
+					type: "DELETE"
+					, url : `/api/project/${seq}`
+					,success: function() {
+						alert("삭제되었습니다.");
+						location.reload();
+					},error:function(){
+						alert("error");
+					}
+				});
+			}
+		}
+	/*]]>*/
 	</script>
 
 </body>
-
 </html>
