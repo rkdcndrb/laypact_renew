@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="white">
+<html lang="ko" class="white" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>LAYPACT</title>
 
@@ -25,8 +25,8 @@
         <section class="content project-detail-top">
           <div class="inner">
             <div class="year">
-              <p>2021</p>
-              <span>© Green Cross Corp.</span>
+              <p>[[${detail.year}]]</p>
+              <span>© [[${detail.company}]]</span>
             </div>
             <div class="back">
               <a href="javascript:history.back();" class="btn vertical" data-hover data-hover-msg="Go Back">
@@ -35,21 +35,21 @@
               </a>
             </div>
             <div class="title-wrap">
-              <span>GC녹십자</span>
-              <p><span>Auction smart dellvery promotion tvc</span> Auction</p>
+              <span>[[${detail.company}]]</span>
+              <p><span>[[${detail.shortDesc}]]</span> [[${detail.subject}]]</p>
             </div>
             <div class="thumbnail-wrap" style="height: 1080px;overflow:hidden;">
-              <div class="thumbnail" style="background-image:url(../web/img/temp/project-img03.jpg);"></div>
+              <div class="thumbnail" th:style="'background-image:url(/admin/images?file='+${detail.image}+')'"></div>
             </div>
             <div class="desc">
               <div class="col-wrap">
                 <div class="col col5 col-l10">
-                  <p class="desc-kr">2021년 레이팩트는 GC녹십자에서 출시한 신제품 경구용피임약 디어미순 브랜드를 런칭하며 피임약의 섹슈얼한하고 부정적인 인식을 개선하기 위해 순수하고 여성스러운 감성을 브랜드 사이트에 녹였습니다.</p>
-                  <p class="desc-en">2021. Duis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi urna. Duis rutrum non risus in imperdiet. Proin molestie accumsan nulla sit amet mattis. Ut vel tristique neque. Praesent purus eros, aliquet sit amet venenatis in,</p>
-                  <p class="desc-tag">Brand Experience, UX Strategy, Website design, Mobile website design, Style Guide, UI/UX design</p>
+                  <p class="desc-kr" th:utext="${detail.contentsKr}"></p>
+                  <p class="desc-en" th:utext="${detail.contentsEn}"></p>
+                  <p class="desc-tag">[[${detail.keyword}]]</p>
                 </div>
                 <div class="col col5 col-l10 text-r">
-                  <a href="https://www.naver.com/" target="_blank" class="btn vertical right" data-hover data-hover-msg="Go to<br/>Site">
+                  <a th:href="@{${detail.link}}" target="_blank" class="btn vertical right" data-hover data-hover-msg="Go to<br/>Site">
                     <i class="ico ico-arrow-top-right"></i>
                     <p class="x-sm line"><span class="txt">Visit website</span></p>
                   </a>
@@ -68,7 +68,7 @@
         </section>
         <section class="content project-detail-bottom">
           <div class="inner">
-            <a href="project.html" class="btn vertical right" data-hover data-hover-msg="Go to<br/>Project">
+            <a href="/web/project" class="btn vertical right" data-hover data-hover-msg="Go to<br/>Project">
               <i class="ico ico-arrow-top-left"></i>
               <p class="x-sm line"><span class="txt">All project</span></p>
             </a>
