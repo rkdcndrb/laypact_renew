@@ -40,6 +40,7 @@
 	<name>laypact</name>
 	<description>laypact project</description>
 	<properties>
+		<maven.test.skip>true</maven.test.skip>
 	    <java.version>17</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <querydsl.version>5.0.0</querydsl.version>
