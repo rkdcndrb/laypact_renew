@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="white">
+<html lang="ko" class="white" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>LAYPACT</title>
 
@@ -52,7 +52,7 @@
               <ul class="project-list lg">
 				
                 <li th:each="list, stat:${projectList.?[mainYn]}" class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
+                  <a th:href="@{project-detail(seq=${list.seq})}" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-bottom-right"></i>
                     <p class="tit">[[${list.company}]]</p>
                     <span class="sub sub-visible">[[${list.shortDesc}]]</span>
@@ -68,19 +68,24 @@
             <p class="project-list-total project-num fade"><span class="total">0</span></p>
             <div class="project-wrap">
               <p class="project-num fade"><span class="year">2004  -</span>ALL PROJECTS</p>
-              <ul class="project-list sm" th:each="list, stat:${projectList}">
-                <li class="project-item fade">
-                  <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
+              <ul class="project-list sm">
+                <li th:each="list:${projectList}" class="project-item fade" th:classappend="${list.type}!='DETAIL PAGE PROJECT'?'no-detail':''">
+                  <div class="thumbnail" th:if="${not #strings.isEmpty(list.thumbnailImage)}">
+                    <img th:src="|/admin/images?file=${list.thumbnailImage}|">
+                  </div>
+                  <a th:href="@{project-detail(seq=${list.seq})}" data-hover data-hover-msg="Go to<br/>Project Detail">
+                  <!--a th:if="${list.type}!='DETAIL PAGE PROJECT'" href="project-detail"-->
                     <i class="ico ico-arrow-sm-bottom-right"></i>
                     <div class="project-info">
                       <p class="cate">[[${list.keyword}]]</p>
                       <span class="year">[[${list.year}]]</span>
                       <p class="tit">[[${list.company}]]</p>
-                      <span class="sub sub-visible">[[${list.shortDesc}]]</span>
-                      <span class="sub sub-hidden">[[${list.shortDesc}]]</span>
+                      <span class="sub sub-visible">[[${list.type}]]</span>
+                      <span class="sub sub-hidden">[[${list.type}]]</span>
                     </div>
                   </a>
                 </li>
+                
                <!-- <li class="project-item fade">
                   <a href="project-detail" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-sm-bottom-right"></i>

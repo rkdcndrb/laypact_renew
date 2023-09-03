@@ -61,17 +61,19 @@ public class ProjectService {
 			MultipartFile mFile = null;
 			if(req.getFile("image") != null) {
 				mFile = req.getFile("image");
-				imageNm = Folder.getAbsolutePath() + "\\/" + UUID.randomUUID().toString() + "_" + req.getFile("image").getOriginalFilename();
-				image = new File(imageNm);
+				imageNm = UUID.randomUUID().toString() + "_" + req.getFile("image").getOriginalFilename();
+				image = new File(Folder.getAbsolutePath() + "/" +imageNm);
 				image.createNewFile();
 				mFile.transferTo(image);
+				imageNm = "images/"+imageNm;
 			}
 			if(req.getFile("thumbnailImage") != null) {
 				mFile = req.getFile("thumbnailImage");
-				thumbnailNm = Folder.getAbsolutePath() + "\\/" + UUID.randomUUID().toString() + "_" + req.getFile("thumbnailImage").getOriginalFilename();
-				thumbnailImage = new File(thumbnailNm);
+				thumbnailNm = UUID.randomUUID().toString() + "_" + req.getFile("thumbnailImage").getOriginalFilename();
+				thumbnailImage = new File(Folder.getAbsolutePath() + "/" +thumbnailNm);
 				thumbnailImage.createNewFile();
 				mFile.transferTo(thumbnailImage);
+				thumbnailNm = "images/"+thumbnailNm;
 			}
 			
 			if(req.getParameterValues("saveMode")[0].equals("I")) {

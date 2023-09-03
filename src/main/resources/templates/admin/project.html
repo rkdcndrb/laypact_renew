@@ -554,6 +554,15 @@
 		function fnSave() {
 			let formData = new FormData($('#frm')[0]);
 			
+			if($('#company').val()=='') {
+				alert("고객사를 입력하세요.");
+				return;
+			}
+			if($('#subject').val()=='') {
+				alert("프로젝트명을 입력하세요.");
+				return;
+			}
+			
 			if($('#saveMode').val()=='I') {
 				$.ajax({
 					type: "POST"

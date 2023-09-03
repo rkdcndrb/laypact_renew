@@ -31,4 +31,8 @@ public class ProjectDto {
 		this.useYn = true;
 	}
 	
+	public void setSeq (long seq) {
+		this.seq = seq;
+	}
+	
 }
