@@ -28,12 +28,12 @@
       <ul class="menu">
         <li><a href="index" data-hover data-hover-msg="Go to<br/>Home"><span>Home</span></a></li>
         <li><a href="sub/about.html" data-hover data-hover-msg="Go to<br/>About" style="pointer-events:none;"><span>About</span></a></li>
-        <li><a href="web/project" data-hover data-hover-msg="Go to<br/>Project"><span>Project</span><span class="num">32</span></a></li>
+        <li><a href="web/project" data-hover data-hover-msg="Go to<br/>Project"><span>Project</span><span class="num"th:text="${#lists.size(projectList)}"></span></a></li>
         <li><a href="sub/contact.html" data-hover data-hover-msg="Go to<br/>Contact" style="pointer-events:none;"><span>Contact</span></a></li>
         <li><a href="sub/dev.html" data-hover data-hover-msg="Go to<br/>Dev" style="pointer-events:none;"><span>Development</span><span class="num">016</span></a></li>
       </ul>
       <div class="logo-wrap">
-        <h1 class="logo"><a href="index.html" data-hover data-hover-msg="Go to<br/>Home"><span class="ir_pm">LAYPACT</span></a></h1>
+        <h1 class="logo"><a href="/index" data-hover data-hover-msg="Go to<br/>Home"><span class="ir_pm">LAYPACT</span></a></h1>
       </div>
     </div>
   </header>
