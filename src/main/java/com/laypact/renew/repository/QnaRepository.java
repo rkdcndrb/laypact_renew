@@ -17,7 +17,7 @@ public interface QnaRepository extends Repository<Qna, Long> {
 	
 	List<Qna> findAll();
 	
-	void save(QnaDto dto);
+	void save(Qna ana);
 	
     Optional<Qna> deleteById(Long id);
 	

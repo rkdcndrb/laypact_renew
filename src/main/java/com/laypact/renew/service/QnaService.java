@@ -26,12 +26,28 @@ public class QnaService {
 		}
 	}
 	
-	public void deleteQna(QnaDto dto) {
-		qnaRepositoty.deleteById(dto.getSeq());
+	public void deleteQna(Long seq) {
+		qnaRepositoty.deleteById(seq);
 	}
 	
 	public void saveQna(QnaDto dto) {
-		qnaRepositoty.save(dto);
+	    Qna qna = null;
+	    if(dto.getSeq()!=null) {
+	    	qna = Qna.builder()
+	    		.seq(dto.getSeq())
+	    		.question(dto.getQuestion())
+	    		.ansMain(dto.getAnsMain())
+	    		.ansSub(dto.getAnsSub())
+	    		.useYn(dto.getUseYn()).build();
+	    }else {
+	    	qna = Qna.builder()
+		    		.question(dto.getQuestion())
+		    		.ansMain(dto.getAnsMain())
+		    		.ansSub(dto.getAnsSub())
+		    		.useYn(dto.getUseYn()).build();
+	    }
+	    		
+		qnaRepositoty.save(qna);
 	}
 	
 }

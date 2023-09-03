@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>LAYPACT</title>
 
@@ -215,7 +215,23 @@
             <div class="wide-right-wrap">
               <div class="wide-right">
                 <div class="qa-wrap">
-                  <div class="qa-item fade">
+			      <div th:each="qna:${qnaList}" class="qa-item fade">
+                    <button class="qa-btn">
+                      <i class="ico ico-arrow-sm-bottom-right"></i>
+                      <div class="q-wrap">
+                        <p th:utext="${qna.question}"></p>
+                        <span class="sub">QUESTIONS</span>
+                      </div>
+                    </button>
+                    <div class="qa-content">
+                      <span>ANSWER</span>
+                      <div class="a-wrap">
+                        <p class="tit" th:utext="${qna.ansMain}"></p>
+                        <p class="txt" th:if="${not #strings.isEmpty(qna.ansSub)}" th:utext="${qna.ansSub}"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="qa-item fade">
                     <button class="qa-btn">
                       <i class="ico ico-arrow-sm-bottom-right"></i>
                       <div class="q-wrap">
@@ -310,7 +326,7 @@
                         <p class="txt">무성할 자랑처럼 불러 위에 언덕 별들을 별이 있습니다. 무엇인지 마리아 다 별 사랑과 피어나듯이 까닭입니다. <br/>헤일 않은 별에도 봅니다. 보고, 않은 계절이 묻힌 까닭이요, 있습니다. 오면 내 하나에 어머님, 까닭입니다. 별을 하나에 소학교 아무 아이들의 밤이 이름자 계십니다.</p>
                       </div>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>

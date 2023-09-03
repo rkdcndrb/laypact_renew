@@ -275,24 +275,54 @@
 	});
 	
 	function fnSave() {
-		if($('#saveMode').val() == 'I'){
+		let payload = {
+			'question' : document.querySelector("[name='question']").value
+			,'ansMain' : document.querySelector("[name='ansMain']").value
+			,'ansSub' : document.querySelector("[name='ansSub']").value
+			,'useYn' : document.querySelector("[name='useYn']").value
+		}
+				
+		if($('#saveMode').val() === 'I'){
 			$.ajax({
-		        url: "api/qna/save",
-		        method: "POST",
-		        dataType: "text",
-		        success: function (data) {
-		            $('#output').val(data)
-		            console.log(data)
-		        }
-		    })
+				url: '/api/qna', 
+				type: 'POST', 
+    			data: JSON.stringify(payload),
+    			contentType: 'application/json',
+				success: function (jqXHR) {
+					alert("저장되었습니다.");
+					location.reload();
+				}, 
+				error: function (jqXHR) { }, 
+			});
 		}else {
-			
+			let seq = document.querySelector("[name='seq']").value;
+			$.ajax({
+				url: '/api/qna/'+seq, 
+				type: 'PUT', 
+    			data: JSON.stringify(payload),
+    			contentType: 'application/json',
+				success: function (jqXHR) {
+					alert("저장되었습니다.");
+					location.reload();
+				}, 
+				error: function (jqXHR) { }, 
+			});
 		}
 		
 	}
 	
 	function fnDel() {
-		
+		let seq = document.querySelector("[name='seq']").value;
+		$.ajax({
+				url: '/api/qna/' + seq, 
+				type: 'DELETE', 
+    			contentType: 'application/json',
+				success: function (jqXHR) {
+					alert("삭제되었습니다.");
+					location.reload();
+				}, 
+				error: function (jqXHR) { }, 
+			});
 	}
 	</script>
 </body>
