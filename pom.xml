@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.1.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.laypact</groupId>
@@ -15,9 +15,7 @@
 	<name>laypact</name>
 	<description>laypact project</description>
 	<properties>
-	    <java.version>11</java.version>
-	    <maven.compiler.source>${java.version}</maven.compiler.source>
-    	<maven.compiler.target>${java.version}</maven.compiler.target>
+	    <java.version>17</java.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <querydsl.version>5.0.0</querydsl.version>
 	</properties>
