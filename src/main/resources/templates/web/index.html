@@ -105,7 +105,7 @@
               <p class="project-num fade"><span th:text="${#lists.size(mainList)}"/>RECOMMENDED PROJECTS</p>
               <ul class="project-list lg">
                 <li th:each="list, stat:${mainList}" class="project-item fade" >
-                  <a href="web/project-detail#sa" data-hover data-hover-msg="Go to<br/>Project Detail">
+                  <a th:href="@{web/project-detail(seq=${list.seq})}" data-hover data-hover-msg="Go to<br/>Project Detail">
                     <i class="ico ico-arrow-bottom-right"></i>
                     <p class="tit">[[${list.company}]]</p>
                     <span class="sub sub-visible">>[[${list.shortDesc}]]</span>
