@@ -38,7 +38,7 @@
               <span>[[${detail.company}]]</span>
               <p><span>[[${detail.shortDesc}]]</span> [[${detail.subject}]]</p>
             </div>
-            <div class="thumbnail-wrap" style="height: 1080px;overflow:hidden;">
+            <div th:if="${not #strings.isEmpty(detail.image)}" class="thumbnail-wrap" style="height: 1080px;overflow:hidden;">
               <div class="thumbnail" th:style="'background-image:url(/admin/images?file='+${detail.image}+')'"></div>
             </div>
             <div class="desc">
