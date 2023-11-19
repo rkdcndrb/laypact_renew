@@ -39,3 +39,4 @@ springdoc:
 file:
   upload:
     location: /home/ubuntu/laypact_renew/
+    #location: /Users/ck/

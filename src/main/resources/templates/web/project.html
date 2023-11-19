@@ -70,7 +70,7 @@
               <p class="project-num fade"><span class="year">2004  -</span>ALL PROJECTS</p>
               <ul class="project-list sm">
                 <li th:each="list:${projectList}" class="project-item fade" th:classappend="${list.type}!='DETAIL PAGE PROJECT'?'no-detail':''">
-                  <div class="thumbnail" th:if="${not #strings.isEmpty(list.thumbnailImage)}">
+                  <div th:if="${!#strings.contains(list.type,'DETAIL PAGE PROJECT')}" class="thumbnail">
                     <img th:src="|/admin/images?file=${list.thumbnailImage}|">
                   </div>
                   <a th:href="${list.type}=='DETAIL PAGE PROJECT'?@{project-detail(seq=${list.seq})}:'javascript:void(0)'">

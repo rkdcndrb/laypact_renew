@@ -176,6 +176,8 @@
 												<th>작업 연도</th>
 												<th>사용여부</th>
 												<th>대표여부</th>
+												<th style="display: none;">HTML Code</th>
+												<th style="display: none;">Credit Code</th>
 											</tr>
 										</thead>
 										<tbody id="mainArea">
@@ -198,6 +200,8 @@
 												<td>[[${main.year}]]</td>
 												<td>[[${main.useYn}]]</td>
 												<td><input type="checkbox" class="select-tree-checkbox" checked /> </td>
+												<td style="display: none;">[[${main.contentsCode}]]</td>
+												<td style="display: none;">[[${main.creditCode}]]</td>
 											</tr>
 										</tbody>
 									</table>
@@ -232,6 +236,8 @@
 												<th>작업 연도</th>
 												<th>사용여부</th>
 												<th>대표여부</th>
+												<th style="display: none;">HTML Code</th>
+												<th style="display: none;">CREDIT Code</th>
 											</tr>
 										</thead>
 										<tbody id="subArea">
@@ -254,6 +260,8 @@
 												<td>[[${sub.year}]]</td>
 												<td>[[${sub.useYn}]]</td>
 												<td><input type="checkbox" class="select-tree-checkbox" /></td>
+												<td style="display: none;">[[${sub.contentsCode}]]</td>
+												<td style="display: none;">[[${sub.creditCode}]]</td>
 											</tr>
 										</tbody>
 									</table>
@@ -355,6 +363,14 @@
 							<div class="row mb-3">
 								<label class="form-label">영문 설명</label>
 								<textarea class="form-control" name="contentsEn" id="contentsEn" rows="5"></textarea>
+							</div>
+							<div class="row mb-3">
+								<label class="form-label">컨텐츠 HTML 코드 </label>
+								<textarea class="form-control" name="contentsCode" id="contentsCode" rows="20"></textarea>
+							</div>
+							<div class="row mb-3">
+								<label class="form-label">CREDIT HTML 코드 </label>
+								<textarea class="form-control" name="creditCode" id="creditCode" rows="10"></textarea>
 							</div>
 						</fieldset>
 					</form>
@@ -464,6 +480,8 @@
 	        	$("#modal1 #keyword").val("");
 	        	$("#modal1 #contentsKr").val("");
 	        	$("#modal1 #contentsEn").val("");
+	        	$("#modal1 #contentsCode").val("");
+	        	$("#modal1 #creditCode").val("");
 	        	$("#modal1 #link").val("");
 	        	$("#modal1 #subject").val("");
 	        	$("#modal1 #shortDesc").val("");
@@ -483,6 +501,8 @@
 				$('#mainYn').val(td.eq(3).text());
 				$('#contentsKr').val(td.eq(4).text());
 				$('#contentsEn').val(td.eq(5).text());
+				$('#contentsCode').val(td.eq(16).text());
+				$('#creditCode').val(td.eq(17).text());
 				$('#link').val(td.eq(6).text());
 				$('#subject').val(td.find('.subj').text());
 				$('#shortDesc').val(td.find('.shortD').text());

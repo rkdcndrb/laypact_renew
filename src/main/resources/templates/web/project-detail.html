@@ -60,11 +60,9 @@
           </div>
         </section>
         <section class="content project-detail-content">
-          <div class="inner">
-            <div class="col-wrap">
-              <div class="col col10" style="height:50rem;background-color:#eee;"></div>
-            </div>
-          </div>
+          <div class="inner" th:if="${not #strings.isEmpty(detail.contentsCode)}" th:utext="${detail.contentsCode}">
+            
+          </di>
         </section>
         <section class="content project-detail-bottom">
           <div class="inner">
@@ -78,25 +76,9 @@
                   <p>THANKS FOR <br/>WATCHING</p>
                 </div>
                 <div class="credit">
-                  <div class="col-wrap">
-                  <div class="col col2 col-l3 col-s5 col-xs10">
-                    <ul>
-                      <li><span>CLIENT</span><p>GC</p></li>
-                      <li><span>LEAD AGENCY</span><p>Laypact</p></li>
-                      <li><span>PHOTOGRAPHY STUDIO</span><p>Lobortis</p></li>
-                    </ul>
+                  <div class="col-wrap" th:if="${not #strings.isEmpty(detail.creditCode)}" th:utext="${detail.creditCode}">
+                  
                   </div>
-                  <div class="col col8 col-l3 col-s5 col-xs10">
-                    <ul>
-                      <li><span>PROJECT MANAGEMENT</span><p>Richard Collins</p></li>
-                      <li><span>AD+DESIGN</span><p>Barbara Young</p></li>
-                      <li><span>DESIGN</span><p>George Alvarado, George Alvarado, George Alvarado</p></li>
-                      <li><span>DEVELOPMENT DIRECTION</span><p>Steve Fisher, Doris Wagner</p></li>
-                      <li><span>PUBLISHING</span><p>Eliza Adams, Joe Stewart</p></li>
-                    </ul>
-                    <p class="copy">©LAYPACT</p>
-                  </div>
-                </div>
                 </div>
               </div>
             </div>

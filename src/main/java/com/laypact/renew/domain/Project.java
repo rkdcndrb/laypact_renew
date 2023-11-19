@@ -40,6 +40,10 @@ public class Project extends AuditBaseEntity<String> {
 	private String contentsKr;
 	@Column(name = "contentsEn", length = 2000)
 	private String contentsEn;
+	@Column(name = "contentsCode", length = 5000)
+	private String contentsCode;
+	@Column(name = "creditCode", length = 5000)
+	private String creditCode;
 	@Column(name = "link", length = 50)
 	private String link;
 	@Column(name = "year", length = 4)

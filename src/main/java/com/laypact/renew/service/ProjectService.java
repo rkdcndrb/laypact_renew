@@ -59,7 +59,7 @@ public class ProjectService {
 			File Folder = new File(fileUploadPath + "/images/");
 			if (!Folder.exists()) Folder.mkdir();
 			MultipartFile mFile = null;
-			if(req.getFile("image") != null) {
+			if(!req.getFile("image").isEmpty()) {
 				mFile = req.getFile("image");
 				imageNm = UUID.randomUUID().toString() + "_" + req.getFile("image").getOriginalFilename();
 				image = new File(Folder.getAbsolutePath() + "/" +imageNm);
@@ -67,7 +67,7 @@ public class ProjectService {
 				mFile.transferTo(image);
 				imageNm = "images/"+imageNm;
 			}
-			if(req.getFile("thumbnailImage") != null) {
+			if(!req.getFile("thumbnailImage").isEmpty()) {
 				mFile = req.getFile("thumbnailImage");
 				thumbnailNm = UUID.randomUUID().toString() + "_" + req.getFile("thumbnailImage").getOriginalFilename();
 				thumbnailImage = new File(Folder.getAbsolutePath() + "/" +thumbnailNm);
@@ -88,6 +88,8 @@ public class ProjectService {
 						.useYn(req.getParameterValues("useYn")[0].equals("true")?true:false)
 						.contentsKr(req.getParameterValues("contentsKr")[0])
 						.contentsEn(req.getParameterValues("contentsEn")[0])
+						.contentsCode(req.getParameterValues("contentsCode")[0])
+						.creditCode(req.getParameterValues("creditCode")[0])
 						.image(imageNm)
 						.thumbnailImage(thumbnailNm)
 						.link(req.getParameterValues("link")[0])
@@ -105,6 +107,8 @@ public class ProjectService {
 						.useYn(req.getParameterValues("useYn")[0].equals("true")?true:false)
 						.contentsKr(req.getParameterValues("contentsKr")[0])
 						.contentsEn(req.getParameterValues("contentsEn")[0])
+						.contentsCode(req.getParameterValues("contentsCode")[0])
+						.creditCode(req.getParameterValues("creditCode")[0])
 						.image(imageNm)
 						.thumbnailImage(thumbnailNm)
 						.link(req.getParameterValues("link")[0])
